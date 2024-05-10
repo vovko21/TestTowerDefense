@@ -13,6 +13,8 @@ public class LevelUI : MonoBehaviour
     private Image _sourceImage;
     private Button _sourceButton;
 
+    public LevelData LevelData => _levelData;
+
     public static event Action<LevelData> OnLevelSelected;
 
     private void Awake()
