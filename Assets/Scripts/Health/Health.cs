@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
 
         _currentHealth -= damageAmount;
 
-        OnHealthChanged.Invoke(-damageAmount);
+        OnHealthChanged?.Invoke(-damageAmount);
     }
 
     public void SetStartingHealth(int startingHealth)
@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
             _currentHealth = _totalHealth;
         }
 
-        OnHealthChanged.Invoke(amount);
+        OnHealthChanged?.Invoke(amount);
     }
      
     public void AddTotalHealth(int amount)
