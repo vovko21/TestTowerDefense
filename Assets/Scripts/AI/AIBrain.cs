@@ -1,32 +1,31 @@
 using System;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public enum State
 {
-    None = 0,
-    Idle = 1,
-    Walk = 2,
-    Attack = 3,
+    Idle = 0,
+    Walk = 1,
+    Attack = 2,
 }
 
 public class AIBrain : MonoBehaviour
 {
-    [SerializeField] private Transform _destination;
+    private Transform _mainDestination;
 
     private Character _character;
     private StateMachine _stateMachine;
     private State_Attack _attackState;
 
-    public void Initialize(Character character)
+    public void Initialize(Character character, Transform mainDestination)
     {
         _character = character;
+        _mainDestination = mainDestination;
 
         //DEPENDENCIES
         _stateMachine = new StateMachine();
 
         //STATES
-        var goToDestinationState = new State_GoToDestination(character, _destination);
+        var goToDestinationState = new State_GoToDestination(character, _mainDestination);
         _attackState = new State_Attack(character);
 
         //TRANSITIONS
@@ -48,12 +47,21 @@ public class AIBrain : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!IsEnemyTag(collision.tag)) return;
+
         var health = collision.GetComponent<Health>();
-        
+
         if (health == null) return;
         
         _attackState.SetTarget(health);
 
         _character.State = State.Attack;
+    }
+
+    private bool IsEnemyTag(string tag)
+    {
+        if (_character.tag == tag) return false;
+
+        return true;
     }
 }

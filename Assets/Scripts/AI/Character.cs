@@ -5,8 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Character : MonoBehaviour
 {
-    [SerializeField] private CharacterSO _characterSO;
-   
+    private CharacterSO _characterSO;
     private CharacterAnimation _characterAnimation;
     private AIBrain _aiBrain;
     private Health _health;
@@ -20,9 +19,6 @@ public class Character : MonoBehaviour
         _characterAnimation = GetComponent<CharacterAnimation>();
         _aiBrain = GetComponent<AIBrain>();
         _health = GetComponent<Health>();
-
-        _health.SetStartingHealth(_characterSO.Health);
-        _aiBrain.Initialize(this);
     }
 
     private void OnEnable()
@@ -33,6 +29,14 @@ public class Character : MonoBehaviour
     private void OnDisable()
     {
         _health.OnHealthChanged -= Health_OnHealthChanged;
+    }
+
+    public void Initialize(CharacterSO characterSO, Transform mainDestination)
+    {
+        _characterSO = characterSO;
+
+        _health.SetStartingHealth(_characterSO.Health);
+        _aiBrain.Initialize(this, mainDestination);
     }
 
     private void Health_OnHealthChanged(int value)
