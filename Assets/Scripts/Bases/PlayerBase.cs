@@ -1,12 +1,15 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class PlayerBase : MonoBehaviour
 {
     [SerializeField] private ResourceController _resourceController;
     [SerializeField] private ResourceUI _resourceUI;
     [SerializeField] private CharacterFactory _characterFactory;
 
+    private PlayerBaseData _playerBaseData;
     private Wallet _burgersWallet;
+    private Health _health;
 
     private void OnEnable()
     {
@@ -21,9 +24,14 @@ public class PlayerBase : MonoBehaviour
     private void Awake()
     {
         _burgersWallet = new Wallet(ResourceType.Burgers);
+        _health = GetComponent<Health>();
+        _playerBaseData = GlobalData.Instance.PlayerBaseData;
 
-        _resourceController.Initiallize(_burgersWallet);
+        _resourceController.Initiallize(_burgersWallet, _playerBaseData.productionSpeed);
         _resourceUI.Initizlize(_burgersWallet);
+        _health.SetStartingHealth(_playerBaseData.baseHealth);
+
+        _burgersWallet.Add(_playerBaseData.startBonus);
     }
 
     private void OnSpawnCharacter(PlayerCharacterSO characterSO)

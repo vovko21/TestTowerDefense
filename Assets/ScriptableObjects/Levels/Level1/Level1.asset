@@ -16,4 +16,5 @@ MonoBehaviour:
   <Name>k__BackingField: Level1
   <Description>k__BackingField: Description
   <SceneName>k__BackingField: Level
+  <EnemyBaseHealth>k__BackingField: 25
   <EnemySpawnSettings>k__BackingField: {fileID: 11400000, guid: 9399ef618ec40ee438cc3620cb5239c9, type: 2}

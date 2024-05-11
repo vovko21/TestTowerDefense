@@ -9,9 +9,10 @@ public class ResourceController : MonoBehaviour
 
     private Wallet _burgerWallet;
 
-    public void Initiallize(Wallet burgerWallet)
+    public void Initiallize(Wallet burgerWallet, float cycleTime)
     {
         _burgerWallet = burgerWallet;
+        _cycleTime = cycleTime;
 
         StartCoroutine(ResourceCounter());
     }

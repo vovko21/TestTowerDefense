@@ -1,17 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] private CharacterFactory _characterFactory;
 
-    [SerializeField] private EnemySpawnSettingsSO _enemySpawnSettingsSO;
+    private Health _health;
+    private EnemySpawnSettingsSO _enemySpawnSettingsSO;
     private int _currentWaveIndex;
 
     private void Start()
     {
-        //_enemySpawnSettingsSO = GlobalData.Instance.CurrentLevel.LevelSO.EnemySpawnSettings;
-        
+        _health = GetComponent<Health>();
+
+        _enemySpawnSettingsSO = GlobalData.Instance.CurrentLevel.LevelSO.EnemySpawnSettings;
+        _health.SetStartingHealth(GlobalData.Instance.CurrentLevel.LevelSO.EnemyBaseHealth);
+
         StartCoroutine(StartWavesLogic());
     }
 
