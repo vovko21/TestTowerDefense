@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     private AIBrain _aiBrain;
     private Health _health;
 
-    public State State { get; set; }
+    public State CurrentState { get; set; }
     public CharacterSO CharacterSO => _characterSO;
     public NavMeshAgent Agent => _agent;
     public CharacterAnimation CharacterAnimation => _characterAnimation;

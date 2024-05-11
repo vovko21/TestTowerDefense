@@ -27,14 +27,11 @@ public class Death : MonoBehaviour
 
     private void Health_OnDestroy(object sender)
     {
-        if(this.CompareTag("EnemyCharacter"))
-        {
-            var characterSO = GetComponent<Character>().CharacterSO as EnemyCharacterSO;
+        var characterSO = GetComponent<Character>().CharacterSO as EnemyCharacterSO;
 
-            if(characterSO != null)
-            {
-                EventManager.TriggerEvent(new EnemyDeathEvent() { coinsReward = characterSO.CoinsReward });
-            }
+        if (characterSO != null)
+        {
+            EventManager.TriggerEvent(new EnemyDeathEvent() { coinsReward = characterSO.CoinsReward });
         }
 
         Destroy(gameObject);

@@ -4,7 +4,7 @@ using UnityEngine;
 public class ResourceController : MonoBehaviour
 {
     [Header("Resource settings")]
-    [SerializeField] private int _cycleTime;
+    [SerializeField] private float _cycleTime;
     [SerializeField] private int _increaseBy;
 
     private Wallet _burgerWallet;

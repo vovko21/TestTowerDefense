@@ -5,6 +5,9 @@ public class State_GoToDestination : IState
     private Transform _destination;
     private Character _character;
 
+    private float _pathUpdateDelay = 0.5f;
+    private float _pathUpdateDeadline;
+
     public State_GoToDestination(Character character, Transform destination)
     {
         _destination = destination;
@@ -13,24 +16,30 @@ public class State_GoToDestination : IState
 
     public void OnEnter()
     {
-        _character.CharacterAnimation.SetWalk();
+        _character.Agent.isStopped = false;
 
-        _character.Agent.SetDestination(_destination.position);
+        _character.CharacterAnimation.SetWalk();
     }
 
     public void OnExit()
     {
+        _character.Agent.isStopped = true;
+
         _character.CharacterAnimation.SetIdle();
     }
 
     public void Tick()
     {
-        //var direciton = _destination.position - _character.transform.position;
-        //direciton.Normalize();
-        //float angle = Mathf.Atan2(direciton.y, direciton.x) * Mathf.Rad2Deg;
+        if (Time.time >= _pathUpdateDeadline)
+        {
+            _character.Agent.SetDestination(_destination.position);
+            _pathUpdateDeadline = Time.time + _pathUpdateDelay;
+        }
+    }
 
-        //_character.transform.position = Vector2.MoveTowards(_character.transform.position, _destination.position, _character.CharacterSO.MovementSpeed * Time.deltaTime);
-        //_character.transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+    public void SetDestination(Transform destination)
+    {
+        _destination = destination;
     }
 
     public Color GetGizmosColor()

@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 209596530}
   m_Layer: 0
   m_Name: EnemyBase
-  m_TagString: EnemyBase
+  m_TagString: EnemySide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1330,7 +1330,7 @@ GameObject:
   - component: {fileID: 1430011961}
   m_Layer: 0
   m_Name: PlayerBase
-  m_TagString: PlayerBase
+  m_TagString: PlayerSide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1427,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f18b5ae1278a24aa2cb83a5314e2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cycleTime: 1
+  _cycleTime: 2.5
   _increaseBy: 1
 --- !u!114 &1430011962
 MonoBehaviour:
@@ -1578,7 +1578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606885801}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.70723015}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

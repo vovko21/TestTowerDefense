@@ -33,6 +33,8 @@ public class State_Attack : IState
     {
         if (_attackCoroutine != null)
             _character.StopCoroutine(_attackCoroutine);
+
+        _character.CharacterAnimation.SetIdle();
     }
 
     public void Tick()
@@ -51,7 +53,7 @@ public class State_Attack : IState
 
             if (_target.CurrentHealth <= 0)
             {
-                _character.State = State.Walk;
+                _character.CurrentState = State.Walk;
             }
 
             yield return new WaitForSeconds(_character.CharacterSO.AttackSpeed - duration);

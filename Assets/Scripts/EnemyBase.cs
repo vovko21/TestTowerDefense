@@ -5,12 +5,12 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField] private CharacterFactory _characterFactory;
 
-    private EnemySpawnSettingsSO _enemySpawnSettingsSO;
+    [SerializeField] private EnemySpawnSettingsSO _enemySpawnSettingsSO;
     private int _currentWaveIndex;
 
     private void Start()
     {
-        _enemySpawnSettingsSO = GlobalData.Instance.CurrentLevel.LevelSO.EnemySpawnSettings;
+        //_enemySpawnSettingsSO = GlobalData.Instance.CurrentLevel.LevelSO.EnemySpawnSettings;
         
         StartCoroutine(StartWavesLogic());
     }

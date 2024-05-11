@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - EnemyBase
-  - PlayerBase
-  - PlayerCharacter
-  - EnemyCharacter
+  - PlayerSide
+  - EnemySide
   layers:
   - Default
   - TransparentFX

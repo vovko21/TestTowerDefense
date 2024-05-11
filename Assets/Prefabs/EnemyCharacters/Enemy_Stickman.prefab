@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2998776924646802310}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.24, y: 0.24, z: 0.24}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 3461097627392437863}
   - component: {fileID: 8481666263144139876}
   - component: {fileID: 4371495205988414750}
-  - component: {fileID: 6399951552963639637}
+  - component: {fileID: 593772298670083982}
   - component: {fileID: 506083586038679148}
   - component: {fileID: 5002813017470633927}
   - component: {fileID: 6369812608690879767}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 6888992244512450899}
   m_Layer: 0
   m_Name: Enemy_Stickman
-  m_TagString: EnemyCharacter
+  m_TagString: EnemySide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8481666263144139876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.036030293, y: 0.45}
+  m_Offset: {x: 0.0057540536, y: -0.04292351}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -217,7 +217,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.73234606, y: 1}
+  m_Size: {x: 0.6966497, y: 0.85914576}
   m_EdgeRadius: 0
 --- !u!58 &4371495205988414750
 CircleCollider2D:
@@ -251,10 +251,10 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1045972, y: 0.45}
+  m_Offset: {x: -1.2136145, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6045972
---- !u!195 &6399951552963639637
+  m_Radius: 1.0267816
+--- !u!195 &593772298670083982
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,16 +263,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 7194545466821206242}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.46
+  m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.96
+  m_Height: 0.86
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
