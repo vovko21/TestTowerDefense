@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3273792167021306583}
   - component: {fileID: 1667034804547943970}
   - component: {fileID: 5961240311338762400}
+  - component: {fileID: 3523815233597416190}
   - component: {fileID: 3335516269468152410}
   - component: {fileID: 8516361192002370567}
   - component: {fileID: 1377717778297433758}
@@ -99,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.036030293, y: 0}
+  m_Offset: {x: 0.036030293, y: 0.45}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -144,9 +145,31 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10459721, y: 0}
+  m_Offset: {x: 0.10459721, y: 0.45}
   serializedVersion: 2
   m_Radius: 0.6045972
+--- !u!195 &3523815233597416190
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047053652323369226}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.46
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.96
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &3335516269468152410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6acc4e8555400cb47b71f3faf55fc746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterSO: {fileID: 11400000, guid: 2976dcbc41b07b740b47e20f359a3655, type: 2}
 --- !u!114 &8516361192002370567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3ef02ea86ef5b49a4e8c8938128ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destination: {fileID: 0}
 --- !u!114 &1377717778297433758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 4588569223244097203}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.24, y: 0.24, z: 0.24}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -285,7 +306,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1123664929
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b0bf7fc2ef5d39846bfe35136e91ff68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

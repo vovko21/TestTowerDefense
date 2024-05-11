@@ -14,6 +14,8 @@ public class State_GoToDestination : IState
     public void OnEnter()
     {
         _character.CharacterAnimation.SetWalk();
+
+        _character.Agent.SetDestination(_destination.position);
     }
 
     public void OnExit()
@@ -23,12 +25,12 @@ public class State_GoToDestination : IState
 
     public void Tick()
     {
-        var direciton = _destination.position - _character.transform.position;
-        direciton.Normalize();
-        float angle = Mathf.Atan2(direciton.y, direciton.x) * Mathf.Rad2Deg;
+        //var direciton = _destination.position - _character.transform.position;
+        //direciton.Normalize();
+        //float angle = Mathf.Atan2(direciton.y, direciton.x) * Mathf.Rad2Deg;
 
-        _character.transform.position = Vector2.MoveTowards(_character.transform.position, _destination.position, _character.CharacterSO.MovementSpeed * Time.deltaTime);
-        _character.transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        //_character.transform.position = Vector2.MoveTowards(_character.transform.position, _destination.position, _character.CharacterSO.MovementSpeed * Time.deltaTime);
+        //_character.transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
     public Color GetGizmosColor()

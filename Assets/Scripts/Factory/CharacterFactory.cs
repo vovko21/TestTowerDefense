@@ -6,8 +6,6 @@ public class CharacterFactory : MonoBehaviour
     [Header("Main settings")]
     [SerializeField] public List<Transform> _playerSpawnPoint;
     [SerializeField] public List<Transform> _enemySpawnPoint;
-    [SerializeField] private GameObject _playerCharacterPrefab;
-    [SerializeField] private GameObject _enemyCharacterPrefab;
 
     [Header("Goals")]
     [SerializeField] private Transform _playerBase;
@@ -24,13 +22,23 @@ public class CharacterFactory : MonoBehaviour
 
     public void SpawnPlayerCharacter(CharacterSO characterSO)
     {
-        Vector2 randomPosition = GetRandomSpawnPoint(_playerSpawnPoint).position;
+        SpawnCharacter(characterSO, _playerSpawnPoint, _enemyBase);
+    }
 
-        var instantitedObject = Instantiate(_playerCharacterPrefab, randomPosition, Quaternion.identity, transform);
+    public void SpawnEnemyCharacter(CharacterSO characterSO)
+    {
+        SpawnCharacter(characterSO, _enemySpawnPoint, _playerBase);
+    }
+
+    private void SpawnCharacter(CharacterSO characterSO, List<Transform> spawnPoints, Transform mainDestination)
+    {
+        Vector2 randomPosition = GetRandomSpawnPoint(spawnPoints).position;
+
+        var instantitedObject = Instantiate(characterSO.Prefab, randomPosition, Quaternion.identity, transform);
 
         var character = instantitedObject.GetComponent<Character>();
 
-        character.Initialize(characterSO, _enemyBase);
+        character.Initialize(characterSO, mainDestination);
     }
 
     private Transform GetRandomSpawnPoint(List<Transform> spawnPoints)

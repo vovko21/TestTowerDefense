@@ -3,7 +3,7 @@ public class GlobalData : SingletonMonobehaviour<GlobalData>
     private LevelData _currentLevel;
     private Wallet _coinsWallet;
 
-    public LevelData LevelData => _currentLevel;
+    public LevelData CurrentLevel => _currentLevel;
     public Wallet CoinsWallet => _coinsWallet;
 
     protected override void Awake()

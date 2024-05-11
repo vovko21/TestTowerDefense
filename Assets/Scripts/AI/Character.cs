@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(CharacterAnimation))]
 [RequireComponent(typeof(AIBrain))]
 [RequireComponent(typeof(Health))]
 public class Character : MonoBehaviour
 {
+    private NavMeshAgent _agent;
     private CharacterSO _characterSO;
     private CharacterAnimation _characterAnimation;
     private AIBrain _aiBrain;
@@ -12,10 +15,12 @@ public class Character : MonoBehaviour
 
     public State State { get; set; }
     public CharacterSO CharacterSO => _characterSO;
+    public NavMeshAgent Agent => _agent;
     public CharacterAnimation CharacterAnimation => _characterAnimation;
 
     private void Awake()
     {
+        _agent = GetComponent<NavMeshAgent>();
         _characterAnimation = GetComponent<CharacterAnimation>();
         _aiBrain = GetComponent<AIBrain>();
         _health = GetComponent<Health>();
@@ -37,6 +42,9 @@ public class Character : MonoBehaviour
 
         _health.SetStartingHealth(_characterSO.Health);
         _aiBrain.Initialize(this, mainDestination);
+        _agent.speed = _characterSO.MovementSpeed;
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
     }
 
     private void Health_OnHealthChanged(int value)
