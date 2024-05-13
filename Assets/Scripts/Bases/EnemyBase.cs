@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
 
     private Health _health;
     private EnemySpawnSettingsSO _enemySpawnSettingsSO;
-    private int _currentWaveIndex;
+    private int _currentWaveIndex = 0;
 
     private void Start()
     {
@@ -33,12 +33,12 @@ public class EnemyBase : MonoBehaviour
             var currentWave = _enemySpawnSettingsSO.Waves[_currentWaveIndex];
 
             var currentEnemyIndex = 0;
-            while (currentEnemyIndex != currentWave.EnemiesToSpawn.Count - 1)
+            while (currentEnemyIndex < currentWave.EnemiesToSpawn.Count)
             {
+                _characterFactory.SpawnEnemyCharacter(currentWave.EnemiesToSpawn[currentEnemyIndex]);
+
                 var randomWaitSpawnTime = Random.Range(currentWave.minSpawnIntervalTime, currentWave.maxSpawnIntervalTime);
                 yield return new WaitForSeconds(randomWaitSpawnTime);
-
-                _characterFactory.SpawnEnemyCharacter(currentWave.EnemiesToSpawn[currentEnemyIndex]);
 
                 currentEnemyIndex++;
             }
@@ -49,7 +49,7 @@ public class EnemyBase : MonoBehaviour
 
     private bool IsFinished()
     {
-        if ( _currentWaveIndex > _enemySpawnSettingsSO.Waves.Count - 1)
+        if (_currentWaveIndex > _enemySpawnSettingsSO.Waves.Count - 1)
         {
             return true;
         }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022ec87a21ab66347a6101e2ea276baa, type: 3}
+  m_Name: Player_Sworman
+  m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 1230704481343003483, guid: c53633f54c189074cb04b201f80be5e7, type: 3}
+  <Health>k__BackingField: 60
+  <Damage>k__BackingField: 10
+  <AttackSpeed>k__BackingField: 1.5
+  <MovementSpeed>k__BackingField: 1.3
+  <Price>k__BackingField: 8
