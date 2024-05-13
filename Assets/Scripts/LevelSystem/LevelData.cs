@@ -14,5 +14,18 @@ public class LevelData
     public LevelData(LevelSO levelSO)
     {
         _levelSO = levelSO;
+        _isCompleted = false;
+    }
+
+    public void Complete()
+    {
+        if (_isCompleted != true)
+        {
+            _isCompleted = true;
+        }
+        else
+        {
+            Debug.LogError("Trying to complete already completed level!");
+        }
     }
 }

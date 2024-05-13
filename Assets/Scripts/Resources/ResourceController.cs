@@ -17,6 +17,11 @@ public class ResourceController : MonoBehaviour
         StartCoroutine(ResourceCounter());
     }
 
+    public void Deinitialize()
+    {
+        StopAllCoroutines();
+    }
+
     private IEnumerator ResourceCounter()
     {
         while (true)

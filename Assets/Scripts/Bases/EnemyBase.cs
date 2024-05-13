@@ -4,14 +4,17 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class EnemyBase : MonoBehaviour
 {
+    [Header("Main")]
     [SerializeField] private CharacterFactory _characterFactory;
+    [Header("UI")]
     [SerializeField] private HealthPointsUI _healthPointsUI;
+    [SerializeField] private WinLoseScreenUI _winLoseScreenUI;
 
     private Health _health;
     private EnemySpawnSettingsSO _enemySpawnSettingsSO;
     private int _currentWaveIndex = 0;
 
-    private void Start()
+    private void Awake()
     {
         _health = GetComponent<Health>();
 
@@ -20,6 +23,16 @@ public class EnemyBase : MonoBehaviour
         _healthPointsUI.Initialize(_health);
 
         StartCoroutine(StartWavesLogic());
+    }
+
+    private void OnEnable()
+    {
+        _health.OnDestroy += Health_OnDestroy;
+    }
+
+    private void OnDisable()
+    {
+        _health.OnDestroy -= Health_OnDestroy;
     }
 
     private IEnumerator StartWavesLogic()
@@ -55,5 +68,13 @@ public class EnemyBase : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void Health_OnDestroy(object sender)
+    {
+        GlobalData.Instance.CurrentLevel.Complete();
+        _winLoseScreenUI.DispalayWin();
+
+        _characterFactory.Deactivate();
     }
 }
