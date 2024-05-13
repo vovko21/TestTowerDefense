@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] protected int _totalHealth;
-    [SerializeField] protected int _currentHealth;
+    protected int _totalHealth;
+    protected int _currentHealth;
 
     public int TotalHealth => _totalHealth;
     public int CurrentHealth => _currentHealth;
@@ -47,7 +47,7 @@ public class Health : MonoBehaviour
 
         OnHealthChanged?.Invoke(amount);
     }
-     
+
     public void AddTotalHealth(int amount)
     {
         _totalHealth += amount;

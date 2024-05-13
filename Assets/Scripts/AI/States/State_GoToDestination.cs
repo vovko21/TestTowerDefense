@@ -35,6 +35,17 @@ public class State_GoToDestination : IState
             _character.Agent.SetDestination(_destination.position);
             _pathUpdateDeadline = Time.time + _pathUpdateDelay;
         }
+
+        var direciton = _destination.position - _character.transform.position;
+
+        if(direciton.x > 0)
+        {
+            _character.transform.localScale = new Vector3(1,1,1);
+        }
+        else
+        {
+            _character.transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
     public void SetDestination(Transform destination)

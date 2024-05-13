@@ -6,6 +6,7 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] private ResourceController _resourceController;
     [SerializeField] private ResourceUI _resourceUI;
     [SerializeField] private CharacterFactory _characterFactory;
+    [SerializeField] private HealthPointsUI _healthPointsUI;
 
     private PlayerBaseData _playerBaseData;
     private Wallet _burgersWallet;
@@ -30,6 +31,7 @@ public class PlayerBase : MonoBehaviour
         _resourceController.Initiallize(_burgersWallet, _playerBaseData.productionSpeed);
         _resourceUI.Initizlize(_burgersWallet);
         _health.SetStartingHealth(_playerBaseData.baseHealth);
+        _healthPointsUI.Initialize(_health);
 
         _burgersWallet.Add(_playerBaseData.startBonus);
     }
