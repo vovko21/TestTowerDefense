@@ -1,6 +1,13 @@
-public struct PlayerBaseData
+public class PlayerBaseData
 {
-    public int baseHealth;
-    public float productionSpeed;
-    public int startBonus;
+    public UpgradeItem<float> productionSpeed;
+    public UpgradeItem<int> baseHealth;
+    public UpgradeItem<int> startBonus;
+
+    public PlayerBaseData()
+    {
+        productionSpeed = new UpgradeItem<float>() { Value = 1f };
+        baseHealth = new UpgradeItem<int>() { Value = 25 };
+        startBonus = new UpgradeItem<int>() { Value = 0 };
+    }
 }

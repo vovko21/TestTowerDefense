@@ -21,14 +21,14 @@ public class LevelSelectorUI : MonoBehaviour
         _levelPreview.OnLevelPreviewCloseClicked -= HideLevelPreview;
     }
 
-    private void LevelUI_OnLevelSelected(LevelData levelData)
+    private void LevelUI_OnLevelSelected(LevelSO levelSO)
     {
-        ShowLevelPreview(levelData);
+        ShowLevelPreview(levelSO);
     }
 
-    public void ShowLevelPreview(LevelData levelData)
+    public void ShowLevelPreview(LevelSO levelSO)
     {
-        _levelPreview.Initialize(levelData);
+        _levelPreview.Initialize(levelSO);
         _levelPreview.gameObject.SetActive(true);
     }
 

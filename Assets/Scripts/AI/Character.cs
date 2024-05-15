@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
     private Health _health;
 
     public State CurrentState { get; set; }
+    public Health Health => _health;
     public CharacterSO CharacterSO => _characterSO;
     public NavMeshAgent Agent => _agent;
     public CharacterAnimation CharacterAnimation => _characterAnimation;

@@ -22,6 +22,8 @@ public class AIBrain : MonoBehaviour
         _character = character;
         _mainDestination = mainDestination;
 
+        _character.Health.OnHealthChanged += Health_OnHealthChanged;
+
         //DEPENDENCIES
         _stateMachine = new StateMachine();
 
@@ -46,7 +48,12 @@ public class AIBrain : MonoBehaviour
         _stateMachine.Tick();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnDisable()
+    {
+        _character.Health.OnHealthChanged -= Health_OnHealthChanged;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (_character.CurrentState == State.Attack) return;
         if (collision.isTrigger) return;
@@ -70,7 +77,7 @@ public class AIBrain : MonoBehaviour
         if (health == null) return;
 
         _attackState.SetTarget(health);
-
+        health.OnDestroy += EnemyHealth_OnDestroy;
         _character.CurrentState = State.Attack;
     }
 
@@ -82,9 +89,24 @@ public class AIBrain : MonoBehaviour
 
         if (health == null) return;
 
+        health.OnDestroy -= EnemyHealth_OnDestroy;
         _goToDestinationState.SetDestination(_mainDestination);
-
         _character.CurrentState = State.Walk;
+    }
+
+    private void Health_OnHealthChanged(int valueChanged)
+    {
+        if (_character.CurrentState == State.Attack) return;
+        
+        if (valueChanged < 0)
+        {
+            _character.CurrentState = State.Walk;
+        }
+    }
+
+    private void EnemyHealth_OnDestroy(object sender)
+    {
+        _goToDestinationState.SetDestination(_mainDestination);
     }
 
     private bool IsFriendlyTag(string tag)

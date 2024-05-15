@@ -31,7 +31,7 @@ public class Death : MonoBehaviour
 
         if (characterSO != null)
         {
-            EventManager.TriggerEvent(new EnemyDeathEvent() { coinsReward = characterSO.CoinsReward });
+            GlobalData.Instance.CoinsWallet.Add(characterSO.CoinsReward);
         }
 
         Destroy(gameObject);

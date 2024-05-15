@@ -21,12 +21,12 @@ public class PlayerBase : MonoBehaviour
         _health = GetComponent<Health>();
         _playerBaseData = GlobalData.Instance.PlayerBaseData;
 
-        _resourceController.Initiallize(_burgersWallet, _playerBaseData.productionSpeed);
+        _resourceController.Initiallize(_burgersWallet, _playerBaseData.productionSpeed.Value);
         _resourceUI.Initizlize(_burgersWallet);
-        _health.SetStartingHealth(_playerBaseData.baseHealth);
+        _health.SetStartingHealth(_playerBaseData.baseHealth.Value);
         _healthPointsUI.Initialize(_health);
 
-        _burgersWallet.Add(_playerBaseData.startBonus);
+        _burgersWallet.Add(_playerBaseData.startBonus.Value);
     }
 
     private void OnEnable()

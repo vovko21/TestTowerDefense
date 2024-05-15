@@ -16,20 +16,20 @@ public class State_GoToDestination : IState
 
     public void OnEnter()
     {
-        _character.Agent.isStopped = false;
-
         _character.CharacterAnimation.SetWalk();
     }
 
     public void OnExit()
     {
-        _character.Agent.isStopped = true;
+        _character.Agent.ResetPath();
 
         _character.CharacterAnimation.SetIdle();
     }
 
     public void Tick()
     {
+        if (_destination == null) return;
+
         if (Time.time >= _pathUpdateDeadline)
         {
             _character.Agent.SetDestination(_destination.position);
@@ -38,9 +38,9 @@ public class State_GoToDestination : IState
 
         var direciton = _destination.position - _character.transform.position;
 
-        if(direciton.x > 0)
+        if (direciton.x > 0)
         {
-            _character.transform.localScale = new Vector3(1,1,1);
+            _character.transform.localScale = new Vector3(1, 1, 1);
         }
         else
         {
@@ -50,6 +50,8 @@ public class State_GoToDestination : IState
 
     public void SetDestination(Transform destination)
     {
+        if (destination == null) return;
+
         _destination = destination;
     }
 

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e80d4feb4484447bf716a7f22e79ec, type: 3}
+  m_Name: EnemySpawnSettings2
+  m_EditorClassIdentifier: 
+  <MinWaveIntervalTime>k__BackingField: 8
+  <MaxWaveIntervalTime>k__BackingField: 9
+  <Waves>k__BackingField:
+  - minSpawnIntervalTime: 2
+    maxSpawnIntervalTime: 7
+    EnemiesToSpawn:
+    - {fileID: 11400000, guid: ed551cb49a7817541bb3f9a7a21e5905, type: 2}
+    - {fileID: 11400000, guid: a829d730f46759a4da332bcf67cbca61, type: 2}
+    - {fileID: 11400000, guid: eef994c69945a6842a87890d22fccdb3, type: 2}
+  - minSpawnIntervalTime: 2
+    maxSpawnIntervalTime: 7
+    EnemiesToSpawn:
+    - {fileID: 11400000, guid: ed551cb49a7817541bb3f9a7a21e5905, type: 2}
+    - {fileID: 11400000, guid: eef994c69945a6842a87890d22fccdb3, type: 2}
+    - {fileID: 11400000, guid: eef994c69945a6842a87890d22fccdb3, type: 2}
+    - {fileID: 11400000, guid: eef994c69945a6842a87890d22fccdb3, type: 2}
+  - minSpawnIntervalTime: 2
+    maxSpawnIntervalTime: 7
+    EnemiesToSpawn:
+    - {fileID: 11400000, guid: ed551cb49a7817541bb3f9a7a21e5905, type: 2}
+    - {fileID: 11400000, guid: ed551cb49a7817541bb3f9a7a21e5905, type: 2}
+    - {fileID: 11400000, guid: ed551cb49a7817541bb3f9a7a21e5905, type: 2}
+    - {fileID: 11400000, guid: ed551cb49a7817541bb3f9a7a21e5905, type: 2}

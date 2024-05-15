@@ -11,7 +11,7 @@ public class LevelPreviewUI : MonoBehaviour
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _closeButton;
 
-    private LevelData _levelData;
+    private LevelSO _levelSO;
 
     public event Action OnLevelPreviewCloseClicked;
 
@@ -27,18 +27,18 @@ public class LevelPreviewUI : MonoBehaviour
         _closeButton.onClick.RemoveListener(OnCloseClicked);
     }
 
-    public void Initialize(LevelData levelData)
+    public void Initialize(LevelSO levelSO)
     {
-        _levelData = levelData;
+        _levelSO = levelSO;
 
-        _nameText.text = _levelData.LevelSO.Name;
-        _descriptionText.text = _levelData.LevelSO.Description;
+        _nameText.text = _levelSO.Name;
+        _descriptionText.text = _levelSO.Description;
     }
 
     private void OnPlayClicked()
     {
-        GlobalData.Instance.SetCurrentLevel(_levelData);
-        SceneManager.LoadScene(_levelData.LevelSO.SceneName);
+        GlobalData.Instance.SetCurrentLevel(_levelSO);
+        SceneManager.LoadScene(_levelSO.SceneName);
     }
 
     private void OnCloseClicked()

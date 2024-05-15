@@ -23,9 +23,5 @@ public class LevelData
         {
             _isCompleted = true;
         }
-        else
-        {
-            Debug.LogError("Trying to complete already completed level!");
-        }
     }
 }
