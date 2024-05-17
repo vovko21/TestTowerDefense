@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class State_GoToDestination : IState
 {
@@ -37,14 +38,14 @@ public class State_GoToDestination : IState
         }
 
         var direciton = _destination.position - _character.transform.position;
-
+        
         if (direciton.x > 0)
         {
-            _character.transform.localScale = new Vector3(1, 1, 1);
+            _character.transform.localScale = new Vector3(Mathf.Abs(_character.transform.localScale.x), _character.transform.localScale.y, _character.transform.localScale.z);
         }
         else
         {
-            _character.transform.localScale = new Vector3(-1, 1, 1);
+            _character.transform.localScale = new Vector3(-Mathf.Abs(_character.transform.localScale.x), _character.transform.localScale.y, _character.transform.localScale.z);
         }
     }
 

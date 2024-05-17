@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public struct EnemyDeathEvent
 {
+    public Character character;
     public int coinsReward;
 }
 
@@ -27,12 +29,23 @@ public class Death : MonoBehaviour
 
     private void Health_OnDestroy(object sender)
     {
-        var characterSO = GetComponent<Character>().CharacterSO as EnemyCharacterSO;
+        StartCoroutine(DieCoroutine());
+    }
+
+    private IEnumerator DieCoroutine()
+    {
+        var character = GetComponent<Character>();
+        var characterSO = character.CharacterSO as EnemyCharacterSO;
 
         if (characterSO != null)
         {
             GlobalData.Instance.CoinsWallet.Add(characterSO.CoinsReward);
+            EventManager.TriggerEvent(new EnemyDeathEvent() { character = character, coinsReward = characterSO.CoinsReward });
         }
+
+        var time = character.CharacterAnimation.SetDying();
+
+        yield return new WaitForSeconds(time);
 
         Destroy(gameObject);
     }

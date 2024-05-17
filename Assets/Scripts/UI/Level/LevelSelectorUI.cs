@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class LevelSelectorUI : MonoBehaviour
@@ -30,10 +31,18 @@ public class LevelSelectorUI : MonoBehaviour
     {
         _levelPreview.Initialize(levelSO);
         _levelPreview.gameObject.SetActive(true);
+
+        _levelPreview.transform.localScale = Vector2.zero;
+        _levelPreview.transform.DOScale(Vector2.one, 0.2f);
     }
 
     public void HideLevelPreview()
     {
-        _levelPreview.gameObject.SetActive(false);
+        _levelPreview.transform.DOScale(Vector2.zero, 0.2f).SetEase(Ease.InBack).OnComplete(
+            () =>
+            {
+                _levelPreview.gameObject.SetActive(false);
+            }
+        );
     }
 }

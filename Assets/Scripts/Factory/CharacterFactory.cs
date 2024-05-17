@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterFactory : MonoBehaviour
@@ -13,14 +12,16 @@ public class CharacterFactory : MonoBehaviour
     [SerializeField] private Transform _enemyBase;
 
     private bool _isActive;
-    private List<GameObject> _instantiatedPlayerCharacters;
-    private List<GameObject> _instantiatedEnemyCharacters;
 
     private void Awake()
     {
+        Activate();
+    }
+
+    public void Activate()
+    {
         _isActive = true;
-        _instantiatedPlayerCharacters = new List<GameObject>();
-        _instantiatedEnemyCharacters = new List<GameObject>();
+        gameObject.SetActive(true);
     }
 
     public void Deactivate()
@@ -43,7 +44,7 @@ public class CharacterFactory : MonoBehaviour
         SpawnCharacter(characterSO, _enemySpawnPoint, _playerBase);
     }
 
-    private GameObject SpawnCharacter(CharacterSO characterSO, List<Transform> spawnPoints, Transform mainDestination)
+    private Character SpawnCharacter(CharacterSO characterSO, List<Transform> spawnPoints, Transform mainDestination)
     {
         Vector2 randomPosition = GetRandomSpawnPoint(spawnPoints).position;
 
@@ -53,11 +54,21 @@ public class CharacterFactory : MonoBehaviour
 
         character.Initialize(characterSO, mainDestination);
 
-        return instantitedObject;
+        return character;
+    }
+
+    private void OnDestroyPlayerCharacter(object sender)
+    {
+
+    }
+
+    private void OnDestroyEnemyCharacter(object sender)
+    {
+
     }
 
     private Transform GetRandomSpawnPoint(List<Transform> spawnPoints)
     {
-        return spawnPoints[Random.Range(0, spawnPoints.Count)];
+        return spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)];
     }
 }

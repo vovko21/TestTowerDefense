@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   <Id>k__BackingField: 1
-  <Name>k__BackingField: Level1
-  <Description>k__BackingField: Description
+  <Name>k__BackingField: Level 1
+  <Description>k__BackingField: First easy level
   <SceneName>k__BackingField: Level
   <EnemyBaseHealth>k__BackingField: 25
   <EnemySpawnSettings>k__BackingField: {fileID: 11400000, guid: 9399ef618ec40ee438cc3620cb5239c9, type: 2}

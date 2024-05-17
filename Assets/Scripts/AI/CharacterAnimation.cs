@@ -7,6 +7,7 @@ public class CharacterAnimation : MonoBehaviour
     private const string WALK_PARAMETR_NAME = "IsWalking";
     private const string ATTACK_PARAMETR_NAME = "Attack";
     private const string DAMAGE_PARAMETR_NAME = "Damage";
+    private const string DIE_PARAMETR_NAME = "Die";
 
     public void SetIdle()
     {
@@ -28,5 +29,12 @@ public class CharacterAnimation : MonoBehaviour
     public void SetDamaged()
     {
         _animator.SetTrigger(DAMAGE_PARAMETR_NAME);
+    }
+
+    public float SetDying()
+    {
+        var data = _animator.GetCurrentAnimatorClipInfo(0);
+        _animator.SetTrigger(DIE_PARAMETR_NAME);
+        return data[0].clip.averageDuration;
     }
 }

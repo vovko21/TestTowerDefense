@@ -96,17 +96,18 @@ public class AIBrain : MonoBehaviour
 
     private void Health_OnHealthChanged(int valueChanged)
     {
-        if (_character.CurrentState == State.Attack) return;
+        //if (_character.CurrentState == State.Attack) return;
         
-        if (valueChanged < 0)
-        {
-            _character.CurrentState = State.Walk;
-        }
+        //if (valueChanged < 0)
+        //{
+        //    _character.CurrentState = State.Walk;
+        //}
     }
 
     private void EnemyHealth_OnDestroy(object sender)
     {
         _goToDestinationState.SetDestination(_mainDestination);
+        _character.CurrentState = State.Walk;
     }
 
     private bool IsFriendlyTag(string tag)
