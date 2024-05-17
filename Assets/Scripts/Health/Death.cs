@@ -43,7 +43,7 @@ public class Death : MonoBehaviour
             EventManager.TriggerEvent(new EnemyDeathEvent() { character = character, coinsReward = characterSO.CoinsReward });
         }
 
-        var time = character.CharacterAnimation.SetDying();
+        var time = character.Animation.SetDying();
 
         yield return new WaitForSeconds(time);
 

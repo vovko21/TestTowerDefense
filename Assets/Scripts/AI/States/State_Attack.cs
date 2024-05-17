@@ -13,7 +13,7 @@ public class State_Attack : IState
         _character = character;
     }
 
-    public void SetTarget(Health target) 
+    public void SetTarget(Health target)
     {
         if (target == null) return;
 
@@ -22,7 +22,15 @@ public class State_Attack : IState
 
     public void OnEnter()
     {
+        if (_character.debug) Debug.Log("Enter Attack state");
+
         if (_target == null) return;
+
+        if(_attackCoroutine != null)
+        {
+            _character.StopCoroutine(_attackCoroutine);
+            _attackCoroutine = null;
+        }
 
         _attackCoroutine = AttackCoroutine();
 
@@ -32,9 +40,12 @@ public class State_Attack : IState
     public void OnExit()
     {
         if (_attackCoroutine != null)
+        {
             _character.StopCoroutine(_attackCoroutine);
+            _attackCoroutine = null;
+        }
 
-        _character.CharacterAnimation.SetIdle();
+        _character.Animation.SetIdle();
     }
 
     public void Tick()
@@ -45,7 +56,10 @@ public class State_Attack : IState
     {
         while (true)
         {
-            var duration = _character.CharacterAnimation.SetAttack() - 0.1f;
+            var duration = _character.Animation.SetAttack() - 0.1f;
+            if(_character.debug)
+                Debug.Log("ATTACK");
+            _character.SoundEffects.PlayAttack();
 
             yield return new WaitForSeconds(duration);
 
